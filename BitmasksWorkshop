@@ -53,6 +53,12 @@ OR you can use this!
 
 string s=bitset<32>(n).to_string();//32->64 for long long
 
+int smallestPowerOfTwo(int n) {
+    if (n <= 1) return 1; 
+    int k = ceil(log2(n)); // Calculate the ceiling of log2(n)
+    return pow(2, k); // Compute 2^k
+}
+
 */
 
 int getBit(int num, int idx) {
