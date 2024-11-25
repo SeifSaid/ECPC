@@ -6,12 +6,16 @@
 	1	0	0  	0	 1	1
 	1  	1  	0 	1	 1      0
 
+**********
+
 X = 1152 = 	10010000000
 Y = 1428 = 	10110010100
 
 X & Y 	 = 	10010000000
 X | Y 	 = 	10110010100
 X ^ Y 	 = 	00100010100
+
+**********
 
 X ^ 0 = X		
 X ^ X = 0
@@ -21,6 +25,58 @@ B ^ C = A
 
 (A ^ B ^ C ^ D ^ E) ^ (A ^ B ^ C) = D ^ E
 
+**********
 
+Parity Check (MOD 2):
+X % 2 == X & 1
+
+X & 1 == 1 if odd
+X & 1 == 0 if even
+
+**********
+
+MOD 2^n:
+X % (2^n) == X & (2^n - 1) == X & (1<<n - 1)
+
+**********
+
+Binary representation of n on 32 bits:
+
+int n; cin>>n;
+string s;
+for(int i=31; i>=0; i--){
+    s+=(((n>>i)&1)+'0');
+}
+cout<<s<<endl;
 
 */
+
+int getBit(int num, int idx) {
+return ((num >> idx) & 1) == 1;
+}
+
+int setBit(int num, int idx) {
+return num | (1<<idx);
+}
+
+int unsetBit(int num, int idx) {
+return num & ~(1<<idx);
+}
+
+int flipBit(int num, int idx) {
+return num ^ (1<<idx);
+}
+
+bool isPowerOf2(int num) {
+return (num & (num-1) == 0) ;
+}
+
+/*
+
+Count the number of 1's in the binary representation of n:
+__builtin_popcount(n);  // int 
+__builtin_popcountl(n); //LL
+//----> Complexity (log(n))
+
+*/
+
